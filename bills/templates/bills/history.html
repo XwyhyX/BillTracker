@@ -1,0 +1,56 @@
+{% extends 'bills/base.html' %}
+{% block content %}
+            <div class="container">               
+            	<div class="row">                   
+                    <div class="col-md-12 text-center">                    	                   
+                        <h1>Bill History</h1>
+                        <a href="{% url 'index' %}" class="btn btn-info btn-lg">Back</a> <br><br>	 
+					    <div class="table-responsive" style="overflow: auto; max-height: 400px; width:350px; margin-right:auto;margin-left:auto"> 
+					        <table class="table">
+					            <thead>
+					                <tr>
+					                    <th>ID</th>
+					                    <th>Month</th>
+					                    <th>Type</th>					                    
+					                    <th>Status</th>
+					                    <th>Actions</th>
+					                </tr>
+					            </thead>
+					            <tbody>
+					                {%for i in object_list %}
+					            	<tr>
+					                    <td>{{ i.id }}</td>
+					                    <td>{{ i.month }}</td>
+					                    <td>{{ i.billType }}</td>					                    
+					                    <td>{{ i.status }} </td>
+					                    <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" data-whatever=i.month>Details</button></td>
+
+					                </tr>
+					                {% endfor %}		
+					            </tbody>
+					        </table>
+					        <div id="myModal" class="modal fade" role="dialog">
+							  <div class="modal-dialog">
+
+							    <!-- Modal content-->
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal">&times;</button>
+							        <h2 class="modal-title">Bill Details</h2>
+							      </div>
+							      <div class="modal-body">
+							        <p>Bill for: {{ i.month }}</p>
+							        <p>Bill Type: {{ i.billType }}</p>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							      </div>
+							    </div>
+
+							  </div>
+							</div>
+					    </div>
+					</div>
+				</div>
+            </div>
+{% endblock %}

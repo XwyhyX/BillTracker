@@ -1,0 +1,41 @@
+{% extends 'bills/base.html' %}
+{% block content %}
+			
+            <div class="container">               
+            	<div class="row">  					
+                    <div class="col-md-12 text-center ">
+                        <h1>Unpaid Bills</h1><a href="{% url 'index' %}" class="btn btn-info btn-lg">Back</a><br><br>
+					    <div class="table-responsive" style="overflow: auto; max-height: 400px;"> 
+					        <table class="table">
+					            <thead>					            
+					                <tr>
+					                    <th>ID</th>
+					                    <th>Month</th>
+					                    <th>Type</th>
+					                    <th>Amount Due</th>					                    
+					                    <th>Date Posted</th>
+					                    <th>Payment Date</th>
+					                    <th>Actions</th>
+					                </tr>
+					            </thead>
+					            	{%for i in object_list %}
+					            	<tr>
+					                    <td><a href="https://www.google.com">{{ i.id }}</a></td>
+					                    <td><a href="https://www.google.com">{{ i.month }}</a></td>
+					                    <td>{{ i.billType }}</td>
+					                    <td>{{ i.amountDue }}</td>					                    
+					                    <td>{{ i.datePosted }}</td>
+					                    <td>{{ i.paymentDate}}</td>
+					                    <td><a href="{% url 'details' i.id %}">Details</a></td>
+					                </tr>
+					                {% endfor %}					               
+					               
+						                	            
+					            </tbody>
+					        </table>
+					    </div>
+					</div>
+				</div>				
+            </div>
+ 
+{% endblock %}
