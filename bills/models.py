@@ -5,7 +5,7 @@ import datetime
 # Create your models here.
 class Bills(models.Model):
 		PAID = 'PD'
-		UNPAID = 'UD'
+		UNPAID = 'NP'
 		STATUS_CHOICES = (
 			(PAID, 'Paid'),
 			(UNPAID, 'Unpaid'),

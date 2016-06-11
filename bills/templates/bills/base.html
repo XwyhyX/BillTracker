@@ -13,10 +13,10 @@
             });
 
         </script>
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/jasny-bootstrap.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/myown.js' %}"></script>
-        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="{% static 'LandingPage.css' %}" rel="stylesheet" type="text/css">
         
@@ -62,8 +62,8 @@
                         </div>
                       </div>
                         <div class="modal-body" align="left">
-                            <p style="font-size:100%">Date Posted: <span style="font-size:150%" name="postedDate" id="postedDate"></span></p>
-                            <p style="font-size:100%" id="paystatus">Date Paid:<span style="font-size:150%" name="paidDate" id="paidDate"></span></p>
+                            <p style="font-size:100%">Date Posted:   <span style="font-size:150%" name="postedDate" id="postedDate"></span></p>
+                            <p style="font-size:100%" id="paystatus">Date Paid:   <span style="font-size:150%" name="paidDate" id="paidDate"></span></p>
                             <span id="payBDO" name="payBDO"></span>
                             <br><span id="payBPI" name="payBPI"></span>
 
@@ -127,7 +127,7 @@
         </div>
 
         
-        <div class="section"><div class="container"><div class="row"><div class="col-md-12"><h1 class="text-center text-primary">The Roomies</h1><p class="text-center"></p></div></div><div class="row"><div class="col-md-4"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-frc1/v/t1.0-9/10805611_10152872138657072_2938245820261180630_n.jpg?oh=7864060e5cf2dd6fb5bb7b736348e73b&oe=57DBCD13&__gda__=1472399277_57af4ccff289d96fcb27984679df09ce" class="center-block img-circle img-responsive"><h3 class="text-center">Carl</h3></div><div class="col-md-4"><img src="https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/13240603_1100310900011187_8373599313110808449_n.jpg?oh=aa5810eb65800e36b0b83b0effff9a01&oe=57CE870D" class="center-block img-circle img-responsive"><h3 class="text-center">Kenji</h3></div><div class="col-md-4"><img src="https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/12360096_1078337932177068_1347026721665691667_n.jpg?oh=efb267f2e7e550900cba79f54c3d1bea&oe=57C46C90" class="center-block img-circle img-responsive"><h3 class="text-center">JR</h3></div></div></div></div><div class="section">
+        <div class="section" id="roomies"><div class="container"><div class="row"><div class="col-md-12"><h1 class="text-center text-primary">The Roomies</h1><p class="text-center"></p></div></div><div class="row"><div class="col-md-4"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-frc1/v/t1.0-9/10805611_10152872138657072_2938245820261180630_n.jpg?oh=7864060e5cf2dd6fb5bb7b736348e73b&oe=57DBCD13&__gda__=1472399277_57af4ccff289d96fcb27984679df09ce" class="center-block img-circle img-responsive"><h3 class="text-center">Carl</h3></div><div class="col-md-4"><img src="https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/13240603_1100310900011187_8373599313110808449_n.jpg?oh=aa5810eb65800e36b0b83b0effff9a01&oe=57CE870D" class="center-block img-circle img-responsive"><h3 class="text-center">Kenji</h3></div><div class="col-md-4"><img src="https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/12360096_1078337932177068_1347026721665691667_n.jpg?oh=efb267f2e7e550900cba79f54c3d1bea&oe=57C46C90" class="center-block img-circle img-responsive"><h3 class="text-center">JR</h3></div></div></div></div><div class="section">
             
         </div>
         <div class="section">

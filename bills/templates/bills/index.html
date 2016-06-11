@@ -14,7 +14,14 @@
                          
                         <div>
                         <br><br>
-                          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Click Me</button>
+                          
+                          <button type="button" class="btn btn-info btn-lg" onclick="scrollWin()">The Roomies</button>
+
+                          <script>
+                          function scrollWin() {
+                              window.scrollTo(0, 600);
+                          }
+                          </script>
                         </div>
                         <!--Modal Dialog-->
                         <!-- Modal -->
@@ -28,7 +35,7 @@
                                 <h4 class="modal-title">Good Day!!</h4>
                               </div>
                               <div class="modal-body">
-                                <a href="{% url 'pay' %}" class="btn btn-info btn-lg" role="button">Unpaid Bills</a>
+                                <a href="{% url 'pay' %}" class="btn btn-info btn-lg  " role="button">Unpaid Bills</a>
                                 <br><br>
                                 <a href="{% url 'history' %}" class="btn btn-info btn-lg" role="button">Bill History</a>
                               </div>

@@ -7,7 +7,7 @@ def index(request):
 	context = {"object_list":object_list}
 	return render(request, 'bills/index.html',context)
 def pay(request):
-	object_list = Bills.objects.all().filter(status="UD")
+	object_list = Bills.objects.all().filter(status="NP")
 	context = {"object_list":object_list}
 	return render(request, 'bills/pay.html',context)
 def history(request):
