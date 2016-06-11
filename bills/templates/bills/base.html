@@ -20,7 +20,7 @@
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="{% static 'LandingPage.css' %}" rel="stylesheet" type="text/css">
         
-        </script>
+        
     </head><body>
         <div class="cover">
             <div class="navbar">
@@ -52,8 +52,77 @@
             {% block content %}
             {% endblock %}
             
-           
-              
+         <div class="modal fade" id="dtlDialog" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="header" style="overflow:auto">
+                            <img id="headerlogo" src="{% static 'img/house.jpg  ' %}" alt="logo">                      
+                            <h2 name="billMonth" id="billMonth"></h2>
+                        </div>
+                      </div>
+                        <div class="modal-body" align="left">
+                            <p style="font-size:100%">Date Posted: <span style="font-size:150%" name="postedDate" id="postedDate"></span></p>
+                            <p style="font-size:100%" id="paystatus">Date Paid:<span style="font-size:150%" name="paidDate" id="paidDate"></span></p>
+                            <span id="payBDO" name="payBDO"></span>
+                            <br><span id="payBPI" name="payBPI"></span>
+
+                            <span align="right">
+                                <p><b>Amount Due: </b><span name="amountDue" id="amountDue"></span></p>
+                            </span>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>  
+            </div>  
+            <!--JAVASCRIPT FOR FETCHING DATA to MODAL WINDOWS -->
+        <script>
+            $(document).on("click", ".open-dtlDialog", function () {
+                 var myMonth = $(this).data('month');
+                 var billType = $(this).data('type');
+                 var dateposted = $(this).data('posteddate');
+                 var datepaid = $(this).data('paiddate');
+                 var amountDue = $(this).data('amountd');
+                 var unpaid = "UNPAID"
+                 if(billType == "Water") {
+                        document.getElementById('headerlogo').src ="{% static 'img/fish.png' %}";
+                        // code to be executed if condition is true
+                    } 
+                 else {
+                    if(billType == "Rent") {
+                        document.getElementById('headerlogo').src ="{% static 'img/house.jpg' %}";
+                        // code to be executed if condition is true
+                    }
+                    if(billType == "Electricity") {
+                        document.getElementById('headerlogo').src ="{% static 'img/electric.png' %}";
+                        // code to be executed if condition is true
+                    }
+
+                 }
+
+                 $(".modal-body #month").val( myMonth );
+                 $(".modal-header #billMonth").text(billType + ' Bill for ' + myMonth );
+                 $(".modal-body #postedDate").html( dateposted.bold() );
+                 $(".modal-body #paidDate").html( datepaid.bold() );
+                 $(".modal-body #amountDue").text( amountDue );
+                 if(datepaid == 'None'){
+                    $(".modal-body #paystatus").html(unpaid.bold());
+                    $(".modal-body #payBDO").html('<a href="http://www.google.com">Pay with BDO</a>');
+                    $(".modal-body #payBPI").html('<a href="http://www.google.com">Pay with BPI</a>');
+                    $(".modal-body #paidDate").text("");
+                 }
+                 else {
+
+                 }
+
+                 // As pointed out in comments, 
+                 // it is superfluous to have to manually call the modal.
+                 // $('#addBookDialog').modal('show');
+            });
+        </script>
 
         </div>
 

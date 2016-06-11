@@ -1,4 +1,5 @@
 {% extends 'bills/base.html' %}
+{% load humanize %}
 {% block content %}
 			
             <div class="container">               
@@ -20,13 +21,20 @@
 					            </thead>
 					            	{%for i in object_list %}
 					            	<tr>
-					                    <td><a href="https://www.google.com">{{ i.id }}</a></td>
-					                    <td><a href="https://www.google.com">{{ i.month }}</a></td>
+					                    <td>{{ i.id }}</td>
+					                    <td>{{ i.month }}</a></td>
 					                    <td>{{ i.billType }}</td>
 					                    <td>{{ i.amountDue }}</td>					                    
 					                    <td>{{ i.datePosted }}</td>
 					                    <td>{{ i.paymentDate}}</td>
-					                    <td><a href="{% url 'details' i.id %}">Details</a></td>
+					                    <td><a data-toggle="modal" 
+					                    		data-month={{ i.month }}
+					                    		data-type={{ i.billType }}
+					                    		data-posteddate="{{ i.datePosted }}"
+					                    		data-amountd="{{ i.amountDue|intcomma }}"
+					                    		data-paiddate="{{ i.paymentDate }}"
+					                     title="Bill Details" class="open-dtlDialog btn btn-info" href="#dtlDialog">Details</a></td>
+
 					                </tr>
 					                {% endfor %}					               
 					               

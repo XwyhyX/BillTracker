@@ -1137,8 +1137,23 @@ a:focus {
 figure {
   margin: 0;
 }
+.header img {
+  float: left;
+  width: 100px;
+  height: 75px;
+  background: transparent;
+}
+
+.header h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+}
 img {
   vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
 }
 .img-responsive,
 .thumbnail > img,

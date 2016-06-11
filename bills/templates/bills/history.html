@@ -30,51 +30,14 @@
 					                    		data-posteddate="{{ i.datePosted }}"
 					                    		data-amountd="{{ i.amountDue|intcomma }}"
 					                    		data-paiddate="{{ i.paymentDate }}"
-					                     title="Add this item" class="open-dtlDialog btn btn-info" href="#dtlDialog">Details</a>
+					                     title="Bill Details" class="open-dtlDialog btn btn-info" href="#dtlDialog">Details</a>
 										</td>
 
 					                </tr>
 					                {% endfor %}		
 					            </tbody>
 					        </table>
-					        <div class="modal fade" id="dtlDialog" role="dialog">
-					        	<div class="modal-dialog">
-					        		<div class="modal-content">
-										<div class="modal-header">					    
-										    <h2 name="billMonth" id="billMonth"></h2>
-										  </div>
-										    <div class="modal-body" align="left">
-										        <p style="font-size:100%"><b>Date Posted: </b><span name="postedDate" id="postedDate"></span></p>
-										        <p style="font-size:100%"><b>Date Paid: </b><span name="paidDate" id="paidDate"></span></p>
-										        <span align="right">
-										        	<p><b>Amount Due: </b><span name="amountDue" id="amountDue"></span></p>
-										        </span>
-										        
-										    </div>
-										    <div class="modal-footer">
-								                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								            </div>
-										</div>
-									</div>	
-								</div>	
-							<script type="text/javascript">
-							   $(document).on("click", ".open-dtlDialog", function () {
-								     var myMonth = $(this).data('month');
-								     var billType = $(this).data('type');
-								     var dateposted = $(this).data('posteddate');
-								     var datepaid = $(this).data('paiddate');
-								     var amountDue = $(this).data('amountd');
-								     $(".modal-body #month").val( myMonth );
-								     $(".modal-header #billMonth").text(billType + ' Bill for ' + myMonth );
-								     $(".modal-body #postedDate").text( dateposted );
-								     $(".modal-body #paidDate").text( datepaid );
-								     $(".modal-body #amountDue").text( amountDue );
-								     // As pointed out in comments, 
-								     // it is superfluous to have to manually call the modal.
-								     // $('#addBookDialog').modal('show');
-								});
-
-							</script>
+					       
 					    </div>
 					</div>
 				</div>
