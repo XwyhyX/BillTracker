@@ -10,6 +10,7 @@ class Bills(models.Model):
 			(PAID, 'Paid'),
 			(UNPAID, 'Unpaid'),
 			)
+
 		month = models.CharField(max_length = 120)
 		billType = models.CharField(max_length = 120)
 		amountDue = models.DecimalField(max_digits=19, decimal_places=2)

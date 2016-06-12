@@ -6,6 +6,19 @@
             	<div class="row">  					
                     <div class="col-md-12 text-center ">
                         <h1>Unpaid Bills</h1><a href="{% url 'index' %}" class="btn btn-info btn-lg">Back</a><br><br>
+
+                        <a href="{% url 'pay' %}/January" class="btn btn-info btn-sm">January</a>	
+                        <a href="{% url 'pay' %}/February" class="btn btn-info btn-sm">February</a>	
+                        <a href="{% url 'pay' %}/March" class="btn btn-info btn-sm">March</a>	
+                        <a href="{% url 'pay' %}/April" class="btn btn-info btn-sm">April</a>	
+                        <a href="{% url 'pay' %}/May" class="btn btn-info btn-sm">May</a>	
+                        <a href="{% url 'pay' %}/June" class="btn btn-info btn-sm">June</a>	
+                        <a href="{% url 'pay' %}/July" class="btn btn-info btn-sm">July</a>	
+                        <a href="{% url 'pay' %}/August" class="btn btn-info btn-sm">August</a>	
+                        <a href="{% url 'pay' %}/September" class="btn btn-info btn-sm">September</a>	
+                        <a href="{% url 'pay' %}/October" class="btn btn-info btn-sm">October</a>	
+                        <a href="{% url 'pay' %}/November" class="btn btn-info btn-sm">November</a>	
+                        <a href="{% url 'pay' %}/December" class="btn btn-info btn-sm">December</a>	 
 					    <div class="table-responsive" style="overflow: auto; max-height: 400px;"> 
 					        <table class="table">
 					            <thead>					            
@@ -19,24 +32,51 @@
 					                    <th>Actions</th>
 					                </tr>
 					            </thead>
-					            	{%for i in object_list %}
-					            	<tr>
-					                    <td>{{ i.id }}</td>
-					                    <td>{{ i.month }}</a></td>
-					                    <td>{{ i.billType }}</td>
-					                    <td>{{ i.amountDue }}</td>					                    
-					                    <td>{{ i.datePosted }}</td>
-					                    <td>{{ i.paymentDate}}</td>
-					                    <td><a data-toggle="modal" 
-					                    		data-month={{ i.month }}
-					                    		data-type={{ i.billType }}
-					                    		data-posteddate="{{ i.datePosted }}"
-					                    		data-amountd="{{ i.amountDue|intcomma }}"
-					                    		data-paiddate="{{ i.paymentDate }}"
-					                     title="Bill Details" class="open-dtlDialog btn btn-info" href="#dtlDialog">Details</a></td>
+					            	{% if filter_month %}
+						                {%for i in filter_month %}
+							            	<tr>
+							                    <td>{{ i.id }}</td>
+							                    <td>{{ i.month }}</a></td>
+							                    <td>{{ i.billType }}</td>
+							                    <td>{{ i.amountDue }}</td>					                    
+							                    <td>{{ i.datePosted }}</td>
+							                    <td>{{ i.paymentDate}}</td>
+							                    <td><a data-toggle="modal" 
+							                    		data-month={{ i.month }}
+							                    		data-type={{ i.billType }}
+							                    		data-posteddate="{{ i.datePosted }}"
+							                    		data-amountd="{{ i.amountDue|intcomma }}"
+							                    		data-paiddate="{{ i.paymentDate }}"
+							                    		{% if i.proof %}
+							                    		data-proof="{{ i.proof.url }}"
+							                    		{% endif %}
+							                     title="Bill Details" class="open-dtlDialog btn btn-info" href="#dtlDialog">Details</a></td>
 
-					                </tr>
-					                {% endfor %}					               
+							                </tr>
+					                	{% endfor %}	
+					                {% else %}
+						            	{% for i in object_list %}
+						            			<tr>
+							                    <td>{{ i.id }}</td>
+							                    <td>{{ i.month }}</a></td>
+							                    <td>{{ i.billType }}</td>
+							                    <td>{{ i.amountDue }}</td>					                    
+							                    <td>{{ i.datePosted }}</td>
+							                    <td>{{ i.paymentDate}}</td>
+							                    <td><a data-toggle="modal" 
+							                    		data-month={{ i.month }}
+							                    		data-type={{ i.billType }}
+							                    		data-posteddate="{{ i.datePosted }}"
+							                    		data-amountd="{{ i.amountDue|intcomma }}"
+							                    		data-paiddate="{{ i.paymentDate }}"
+							                    		{% if i.proof %}
+							                    		data-proof="{{ i.proof.url }}"
+							                    		{% endif %}
+							                     title="Bill Details" class="open-dtlDialog btn btn-info" href="#dtlDialog">Details</a></td>
+
+							                </tr>
+							                {% endfor %}
+						            {% endif %}				               
 					               
 						                	            
 					            </tbody>

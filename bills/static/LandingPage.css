@@ -175,6 +175,10 @@ fieldset {
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
+
+.bluetext {
+  color:#57CBE8;
+}
 legend {
   border: 0;
   padding: 0;
@@ -302,6 +306,11 @@ th {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.boxform{
+  background-color:white;
+  padding-left:50px;
+  padding-bottom:50px;
 }
 .glyphicon-asterisk:before {
   content: "\2a";
@@ -1137,18 +1146,35 @@ a:focus {
 figure {
   margin: 0;
 }
-.header img {
+.leftlogo {
   float: left;
   width: 100px;
   height: 75px;
   background: transparent;
 }
 
-.header h1 {
-  position: relative;
-  top: 18px;
-  left: 10px;
+.rightlogo {
+  float: right;
+  width: 100px;
+  height: 75px;
+  background: transparent;
 }
+
+.header h1 {
+  position: center;
+  padding-top:50px;
+  top: 30px;
+  left: 10px;
+
+}
+.paylink img {
+  
+  width: 40px;
+  height: 12px;
+  background: transparent;
+}
+
+
 img {
   vertical-align: middle;
   max-width: 100%;

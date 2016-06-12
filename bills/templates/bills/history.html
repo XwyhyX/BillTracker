@@ -5,8 +5,20 @@
             	<div class="row">                   
                     <div class="col-md-12 text-center">                    	                   
                         <h1>Bill History</h1>
-                        <a href="{% url 'index' %}" class="btn btn-info btn-lg">Back</a> <br><br>	 
-					    <div class="table-responsive" style="overflow: auto; max-height: 400px; width:350px; margin-right:auto;margin-left:auto"> 
+                        <a href="{% url 'index' %}" class="btn btn-info btn-lg">Back</a> <br><br>
+                        <a href="{% url 'history' %}/January" class="btn btn-info btn-sm" >January</a>	
+                        <a href="{% url 'history' %}/February" class="btn btn-info btn-sm">February</a>	
+                        <a href="{% url 'history' %}/March" class="btn btn-info btn-sm">March</a>	
+                        <a href="{% url 'history' %}/April" class="btn btn-info btn-sm">April</a>	
+                        <a href="{% url 'history' %}/May" class="btn btn-info btn-sm">May</a>	
+                        <a href="{% url 'history' %}/June" class="btn btn-info btn-sm">June</a>	
+                        <a href="{% url 'history' %}/July" class="btn btn-info btn-sm">July</a>	
+                        <a href="{% url 'history' %}/August" class="btn btn-info btn-sm">August</a>	
+                        <a href="{% url 'history' %}/September" class="btn btn-info btn-sm">September</a>	
+                        <a href="{% url 'history' %}/October" class="btn btn-info btn-sm">October</a>	
+                        <a href="{% url 'history' %}/November" class="btn btn-info btn-sm">November</a>	
+                        <a href="{% url 'history' %}/December" class="btn btn-info btn-sm">December</a>	 
+					    <div class="table-responsive" style="overflow: auto; max-height: 400px; width:820px; margin-right:auto;margin-left:auto"> 
 					        <table class="table">
 					            <thead>
 					                <tr>
@@ -15,26 +27,53 @@
 					                    <th>Type</th>					                    
 					                    <th>Status</th>
 					                    <th>Actions</th>
+					                    
 					                </tr>
 					            </thead>
 					            <tbody>
-					                {%for i in object_list %}
-					            	<tr>
-					                    <td>{{ i.id }}</td>
-					                    <td>{{ i.month }}</td>
-					                    <td>{{ i.billType }}</td>					                    
-					                    <td>{{ i.status }} </td>
-					                    <td><a data-toggle="modal" 
-					                    		data-month={{ i.month }}
-					                    		data-type={{ i.billType }}
-					                    		data-posteddate="{{ i.datePosted }}"
-					                    		data-amountd="{{ i.amountDue|intcomma }}"
-					                    		data-paiddate="{{ i.paymentDate }}"
-					                     title="Bill Details" class="open-dtlDialog btn btn-info" href="#dtlDialog">Details</a>
-										</td>
+					            	{% if filter_month %}
+						                {%for i in filter_month %}
+						            	<tr>
+						                    <td>{{ i.id }}</td>
+						                    <td>{{ i.month }}</td>
+						                    <td>{{ i.billType }}</td>					                    
+						                    <td>{{ i.status }} </td>				                    
+						                    <td><a data-toggle="modal" 
+						                    		data-month={{ i.month }}
+						                    		data-type={{ i.billType }}
+						                    		data-posteddate="{{ i.datePosted }}"
+						                    		data-amountd="{{ i.amountDue|intcomma }}"
+						                    		data-paiddate="{{ i.paymentDate }}"
+						                    		{% if i.proof %}
+						                    		data-proof="{{ i.proof.url }}"
+						                    		{% endif %}
+						                     title="Bill Details" class="open-dtlDialog btn btn-info" href="#dtlDialog">Details</a>
+											</td>
 
-					                </tr>
-					                {% endfor %}		
+						                </tr>
+						                {% endfor %}
+						            {% else %}
+						            	{% for i in object_list %}
+						            	<tr>
+						                    <td>{{ i.id }}</td>
+						                    <td>{{ i.month }}</td>
+						                    <td>{{ i.billType }}</td>					                    
+						                    <td>{{ i.status }} </td>				                    
+						                    <td><a data-toggle="modal" 
+						                    		data-month={{ i.month }}
+						                    		data-type={{ i.billType }}
+						                    		data-posteddate="{{ i.datePosted }}"
+						                    		data-amountd="{{ i.amountDue|intcomma }}"
+						                    		data-paiddate="{{ i.paymentDate }}"
+						                    		{% if i.proof %}
+						                    		data-proof="{{ i.proof.url }}"
+						                    		{% endif %}
+						                     title="Bill Details" class="open-dtlDialog btn btn-info" href="#dtlDialog">Details</a>
+											</td>
+
+						                </tr>
+						                {% endfor %}
+						            {% endif %}		
 					            </tbody>
 					        </table>
 					       

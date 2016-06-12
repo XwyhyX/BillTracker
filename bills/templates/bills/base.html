@@ -40,7 +40,7 @@
                                 <a href="{% url 'index' %}">Home</a>
                             </li>
                             <li>
-                                <a href="#">Contact Me</a>
+                                <a href="mailto:johnrei.enriquez@gmail.com">Contact Me</a>
                             </li>
                         </ul>
                     </div>
@@ -57,18 +57,23 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="header" style="overflow:auto">
-                            <img id="headerlogo" src="{% static 'img/house.jpg  ' %}" alt="logo">                      
+                            <img class="leftlogo"id="headerlogo" src="{% static 'img/house.jpg' %}" alt="logo">                      
                             <h2 name="billMonth" id="billMonth"></h2>
+
                         </div>
                       </div>
                         <div class="modal-body" align="left">
-                            <p style="font-size:100%">Date Posted:   <span style="font-size:150%" name="postedDate" id="postedDate"></span></p>
-                            <p style="font-size:100%" id="paystatus">Date Paid:   <span style="font-size:150%" name="paidDate" id="paidDate"></span></p>
-                            <span id="payBDO" name="payBDO"></span>
-                            <br><span id="payBPI" name="payBPI"></span>
+                            <p style="font-size:100%">Date Posted:   <span class="bluetext" style="font-size:150%" name="posteddate" id="posteddate"></span></p>
+                            <p style="font-size:100%"><span id="paystatus"></span><span class="bluetext" style="font-size:150%" name="paiddate" id="paiddate"></span></p>
+                            <div id="paysection">
+                                
+                            </div>
+                            <span id="prooftext"></span>
+                            <span id="proof" name="proof"></span>
+
 
                             <span align="right">
-                                <p><b>Amount Due: </b><span name="amountDue" id="amountDue"></span></p>
+                                <p align="right"><b>Amount Due: </b><span name="amountDue" id="amountDue"></span></p>
                             </span>
                             
                         </div>
@@ -86,6 +91,7 @@
                  var dateposted = $(this).data('posteddate');
                  var datepaid = $(this).data('paiddate');
                  var amountDue = $(this).data('amountd');
+                 var prooflink = $(this).data('proof');
                  var unpaid = "UNPAID"
                  if(billType == "Water") {
                         document.getElementById('headerlogo').src ="{% static 'img/fish.png' %}";
@@ -102,22 +108,44 @@
                     }
 
                  }
-
-                 $(".modal-body #month").val( myMonth );
-                 $(".modal-header #billMonth").text(billType + ' Bill for ' + myMonth );
-                 $(".modal-body #postedDate").html( dateposted.bold() );
-                 $(".modal-body #paidDate").html( datepaid.bold() );
-                 $(".modal-body #amountDue").text( amountDue );
+                 
                  if(datepaid == 'None'){
-                    $(".modal-body #paystatus").html(unpaid.bold());
-                    $(".modal-body #payBDO").html('<a href="http://www.google.com">Pay with BDO</a>');
-                    $(".modal-body #payBPI").html('<a href="http://www.google.com">Pay with BPI</a>');
-                    $(".modal-body #paidDate").text("");
+
+                    
+                    
+                    $(".modal-body #paidDate").html( datepaid.bold() );
+                    $(".modal-body #month").val( myMonth );
+                    $(".modal-header #billMonth").text(billType + ' Bill for ' + myMonth );
+                    $(".modal-body #posteddate").html( dateposted.bold() );
+                    $(".modal-body #amountDue").text(amountDue );
+                    $(".modal-body #paystatus").html(unpaid.bold());                  
+                    $(".modal-body #paiddate").text("");
+                    $(".modal-body #prooftext").text("");
+                    $(".modal-body #proof").text('');
+                    $(".modal-body #paysection").html('<div class="paylink" style="overflow:auto"><img id="imgBDO" src="{% static 'img/bdo.jpg' %}"><span id="payBDO" name="payBDO"><a href="https://online.bdo.com.ph">  Pay with BDO (Fund Transfer)</a></span><br></div><div class="paylink" style="overflow:auto"><img  id=-"imgBPI" src="{% static 'img/bpi.png' %}"><span id="payBPI" name="payBPI"><a href="https://secure1.bpiexpressonline.com/AuthFiles/login.aspx?URL=/direct_signin.htm">  Pay with BPI (Fund Transfer)</a></span><br></div>');
+                    
+                    
                  }
                  else {
-
+                    $(".modal-body #paystatus").text("Date Paid:   ");
+                    $(".modal-body #payBDO").text("");
+                    $(".modal-body #payBPI").text("");
+                    $(".modal-body #paidDate").html( datepaid.bold() );
+                    $(".modal-body #month").val( myMonth );
+                    $(".modal-header #billMonth").text(billType + ' Bill for ' + myMonth );
+                    $(".modal-body #posteddate").html( dateposted.bold() );
+                    $(".modal-body #paiddate").html( datepaid.bold() );
+                    $(".modal-body #amountDue").text(amountDue );
+                    $(".modal-body #proof").html('<img src="' +prooflink +'">');
+                    $(".modal-body #prooftext").text("Proof of Payment:");
+                    $(".modal-body #paysection").html('');
+                    if(prooflink == null){
+                        $(".modal-body #prooftext").text("Proof of Payment: None");
+                        $(".modal-body #proof").text('');
+                     }
                  }
 
+                 
                  // As pointed out in comments, 
                  // it is superfluous to have to manually call the modal.
                  // $('#addBookDialog').modal('show');

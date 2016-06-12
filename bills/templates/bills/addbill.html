@@ -1,0 +1,22 @@
+{% extends 'bills/base.html' %}
+{% load humanize %} 
+{% block content %}
+
+	<div class="container" align="left">
+		<a href="{% url 'index' %}" class="btn btn-primary btn-lg">Back</a> 
+		<div class="boxform">			
+			<br>
+			<p align="center" style="font-size:250%"> <b>Add bill</b> </p>
+			<form method= 'POST' action=''>
+
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="Submit" value='Submit'/>
+			</form>
+		</div>
+	</div>
+
+
+
+
+{% endblock %}
